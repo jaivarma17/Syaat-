@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What We Do</title>
+
+  <!-- ✅ Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- ✅ Font Awesome -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      fetch("header.html")
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("header-container").innerHTML = data;
+        });
+
+      fetch("footer.html")
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById("footer-container").innerHTML = data;
+        });
+    });
+  </script>
+
+  <style>
+    #header-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 50;
+    }
+
+    body {
+      padding-top: 100px;
+    }
+
+    .blurred {
+      filter: blur(5px);
+      pointer-events: none;
+    }
+
+    #popupOverlay {
+      z-index: 1000; /* Ensures popup is at the top */
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .video-container video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .video-text {
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 2rem;
+      font-weight: bold;
+      color: white;
+      text-align: center;
+    }
+
+    .view-events-btn {
+      position: absolute;
+      bottom: 10%;
+      left: 5%;
+      background-color: #f97316;
+      color: white;
+      padding: 10px 20px;
+      font-size: 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s;
+    }
+
+    .view-events-btn:hover {
+      background-color: #ea580c;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100">
+
+  <!-- ✅ Header -->
+  <div id="header-container"></div>
+
+  <!-- ✅ What We Do Section -->
+  <section id="main-content" class="py-12 mt-10 transition-all duration-300 bg-orange-50">
+    <h2 class="text-2xl md:text-3xl font-bold text-center mb-10">What We Do</h2>
+
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      <!-- Cards -->
+      <div onclick="openPopup(1)" class="cursor-pointer bg-white rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 text-center">
+        <div class="p-4 bg-orange-500 text-white font-semibold uppercase">Yoga Camps</div>
+        <img src="images/yoga-camps.jpg" class="w-full h-48 object-cover" />
+      </div>
+
+      <div onclick="openPopup(2)" class="cursor-pointer bg-white rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 text-center">
+        <div class="p-4 bg-orange-500 text-white font-semibold uppercase">CSR</div>
+        <img src="images/csr.jpg" class="w-full h-48 object-cover" />
+      </div>
+
+      <div onclick="openPopup(3)" class="cursor-pointer bg-white rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 text-center">
+        <div class="p-4 bg-orange-500 text-white font-semibold uppercase">Individual Yoga Sessions</div>
+        <img src="images/individual-yoga-sessions.jpg" class="w-full h-48 object-cover" />
+      </div>
+
+      <div onclick="openPopup(4)" class="cursor-pointer bg-white rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 text-center">
+        <div class="p-4 bg-orange-500 text-white font-semibold uppercase">Corporate Yoga Sessions</div>
+        <img src="images/corporate-yoga-sessions.jpeg" class="w-full h-48 object-cover" />
+      </div>
+
+      <div onclick="openPopup(5)" class="cursor-pointer bg-white rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 text-center">
+        <div class="p-4 bg-orange-500 text-white font-semibold uppercase">School Programmes</div>
+        <img src="images/school-programmes.jpg" class="w-full h-48 object-cover" />
+      </div>
+
+      <div onclick="openPopup(6)" class="cursor-pointer bg-white rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105 text-center">
+        <div class="p-4 bg-orange-500 text-white font-semibold uppercase">Team Building Exercises</div>
+        <img src="images/team-building-exercises.png" class="w-full h-48 object-cover" />
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ✅ Popup -->
+  <div id="popupOverlay" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+    <div onclick="closePopup()" class="absolute inset-0"></div>
+    <div onclick="event.stopPropagation()" class="relative bg-orange-50 p-6 rounded-lg max-w-2xl mx-4 z-50 shadow-lg text-left transition-all max-h-[90vh] overflow-y-auto">
+      <h3 id="popupTitle" class="text-2xl font-bold mb-4"></h3>
+      <div id="popupText" class="text-gray-700 whitespace-pre-line"></div>
+      <button onclick="closePopup()" class="mt-6 px-6 py-2 bg-orange-500 text-white rounded hover:bg-orange-600">Close</button>
+    </div>
+  </div>
+
+  <!-- ✅ JS for Popup Logic -->
+  <script>
+    const popupData = {
+      1: {
+        title: "Yoga Camps",
+        text: `Our Yoga camps are a sanctuary for those who are looking for peace and happiness away from the stress of everyday life. It is the ideal place to begin the Yogic way of life and practice different Asanas, Pranayamas, Kriyas and also learn about relaxation and meditation. The camps are designed such that both experts and newcomers will go back enriched having learned something new about Yoga.\n\nYoga is not just exercise and a Guru’s guidance is important to practice Yoga in its entirety. Renowned Yoga practitioners lead our camps with their knowledge of the ancient science of Yoga. These camps also ensure Yoga is reaching the masses like never before.\n\nOur organisation which focuses on Yogic healthcare and meditation organizes Yoga Camps in multiple Indian and International cities. We also spread Ayurvedic awareness, offer yoga vacations & retreats and train multiple Yoga teachers every year. All the programmes focus on transforming individual lives and building a healthy society.`
+      },
+      2: {
+        title: "CSR",
+        text: `<p>The Corporate Social Responsibility, or CSR, is one of the core concepts followed by the Yog Abhyas Ashram. We consider it our duty to let everyone enjoy an equal share in society, and our group follows all the ethical standards in making this possible.</p>
+        <p class="mt-2">Moving forward with progressive yet sustainable development strategies, we believe in giving back to society in various forms. Our non-profit and charity endeavors are continually planned and executed to ensure our contribution to community development.</p>
+        <p class="mt-2 font-semibold">The main methods we use for fulfilling our CSR are:</p>
+        <ul class="list-disc list-inside mt-0">
+          <li>Donations</li>
+          <li>Non-profit Initiatives</li>
+          <li>Sapling plantation for prevention of deforestation</li>
+          <li>Yoga Camps for uplifting the society spiritually</li>
+          <li>Health Care missions</li>
+        </ul>`
+      },
+      3: {
+        title: "Individual Yoga Sessions",
+        text: `Join our individual Yoga sessions to experience the magic of Yoga that brings you peace, health and happiness. Whether it is intense training, meditation, or practising Asanas, Kriyas or Pranayamas individual Yoga sessions will help you attain goals you’ve set for your life.\n\nIndividual sessions with Yoga teachers also help address specific needs be it a health issue, flexibility problems or mental stress. Individual Yoga sessions help you connect with your inner self, relieves stress and help you balance every aspect of your life in a way only Yoga can do.`
+      },
+      4: {
+        title: "Corporate Yoga Sessions",
+        text: `Professionals are more stressed than ever leading to lifestyle disorders and a host of other problems. To bring about a shift in this space and enhance the productivity of professionals, we are introducing Corporate Yoga sessions. These sessions will revolve around improving concentration and inducing relaxation and calmness.\n\nIndividuals also benefit from Corporate Yoga as they will be able to balance work and life. Anxiety and stress are considerably reduced, leading to improved health and happiness, and the quality of work doubles.`
+      },
+      5: {
+        title: "School Programmes",
+        text: `Yoga in schools is a major part of the programmes we offer at Yog Abhyas Ashram. Children spend a lot of time sitting in classrooms, learning new things and trying to cope up with all the information.\n\nYoga is important to bring about a change in this situation. Children who practice Yoga are able to relax better, experience positive moods and benefit from improved posture. They also develop mind control and mental flexibility which are important life skills.`
+      },
+      6: {
+        title: "Team Building Exercises",
+        text: `Yog Abhyas Ashram offers team building yoga sessions. Through relaxing exercises and activities, the team members are given a chance to connect on a different level. A mindfulness session or yoga is ideal for team building.\n\nTeam building Yoga brings people together to perform complex movements that cannot be performed individually. Exercises can vary from forming shapes or moving across a room as a unified group. It is a good alternative to problem solving exercises and other group games.`
+      }
+    };
+
+    function openPopup(id) {
+      document.getElementById("popupTitle").textContent = popupData[id].title;
+      const popupTextEl = document.getElementById("popupText");
+      popupTextEl.innerHTML = popupData[id].text;
+      document.getElementById("popupOverlay").classList.remove("hidden");
+      document.getElementById("popupOverlay").classList.add("flex");
+
+      document.getElementById("main-content").classList.add("blurred");
+      document.getElementById("header-container").classList.add("blurred");
+    }
+
+    function closePopup() {
+      document.getElementById("popupOverlay").classList.add("hidden");
+      document.getElementById("popupOverlay").classList.remove("flex");
+
+      document.getElementById("main-content").classList.remove("blurred");
+      document.getElementById("header-container").classList.remove("blurred");
+    }
+  </script>
+
+  <!-- ✅ Banner Section -->
+<section class="bg-orange-50 py-12">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-2xl md:text-3xl font-bold text-center mb-10">Get Involved!</h2>
+  
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+  
+        <!-- Become a Volunteer -->
+        <a href="become-a-volunteer.html" class="block p-6 border border-orange-200 rounded-lg shadow hover:shadow-lg transition duration-300 bg-orange-500 hover:bg-orange-100">
+          <div class="text-orange-600 text-3xl mb-4"><i class="fas fa-hands-helping"></i></div>
+          <h3 class="text-xl font-semibold mb-2">Become a Volunteer</h3>
+          <p class="text-gray-600">Step up and serve! Be a part of our volunteer team and bring wellness to your community.</p>
+        </a>
+  
+        <!-- Organise Yoga Event -->
+        <a href="organise-a-yoga-event.html" class="block p-6 border border-orange-200 rounded-lg shadow hover:shadow-lg transition duration-300 bg-orange-500 hover:bg-orange-100">
+          <div class="text-orange-600 text-3xl mb-4"><i class="fas fa-spa"></i></div>
+          <h3 class="text-xl font-semibold mb-2">Organise Yoga Event</h3>
+          <p class="text-gray-600">Host a yoga session in your area and help spread the joy of physical and mental well-being.</p>
+        </a>
+  
+        <!-- Become a Contributor -->
+        <a href="become-a-contributor.html" class="block p-6 border border-orange-200 rounded-lg shadow hover:shadow-lg transition duration-300 bg-orange-500 hover:bg-orange-100">
+          <div class="text-orange-600 text-3xl mb-4"><i class="fas fa-pen-nib"></i></div>
+          <h3 class="text-xl font-semibold mb-2">Become a Contributor</h3>
+          <p class="text-gray-600">Share your knowledge, stories, experiences or resources to inspire others on their wellness journey.</p>
+        </a>
+  
+      </div>
+    </div>
+  </section>
+  
+  
+
+    <!-- ✅ Footer Section (Dynamically Loaded, Removed mb-16) -->
+    <div id="footer-container" class="mt-0"></div>
+
+</body>
+</html>
+

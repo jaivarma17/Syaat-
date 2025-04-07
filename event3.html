@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview and History</title>
+    
+    <!-- ✅ Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- ✅ Font Awesome (Ensures Social Icons Load) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // ✅ Load header.html
+            fetch("header.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("header-container").innerHTML = data;
+                })
+                .catch(error => console.error("Error loading header:", error));
+
+            // ✅ Load footer.html
+            fetch("footer.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("footer-container").innerHTML = data;
+                })
+                .catch(error => console.error("Error loading footer:", error));
+        });
+    </script>
+
+    <style>
+        /* ✅ Ensure header (black banner + navbar) is pinned */
+        #header-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+        }
+
+        /* ✅ Add padding to body to prevent content from overlapping navbar */
+        body {
+            padding-top: 100px; /* Adjust based on navbar height */
+        }
+
+        /* ✅ Video Section Styles */
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 100vh; /* Full screen */
+            overflow: hidden;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ✅ Text Positioned at Bottom Middle */
+        .video-text {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+        }
+
+        /* ✅ View Events Button (Matches Navbar Donate Button) */
+        .view-events-btn {
+            position: absolute;
+            bottom: 10%;
+            left: 5%;
+            background-color: #f97316; /* orange-500 */
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        .view-events-btn:hover {
+            background-color: #ea580c; /* Hover color - orange-600 */
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- ✅ Header Section (Black Banner + Navbar) -->
+    <div id="header-container"></div>
+       
+    </header>
+
+<!-- Event Description & Social Media Banner -->
+<div class="container mx-auto mt-8 mb-10 flex justify-between">
+    <!-- Left Section: Image, Description & Social Links (3/4 Width) -->
+    <div class="w-3/4 bg-white p-6 rounded-lg shadow-lg">
+        <!-- Event Image -->
+        <img src="images/event3.jpg" alt="Mahaprabhu Ji's Yoga Camp" class="w-full h-96 object-cover rounded-lg mb-6">
+
+        <h1 class="text-3xl font-bold text-gray-800 mb-4">Mahaprabhu Ji’s Yoga Camp</h1>
+        
+        <p class="text-gray-700">
+            Even though yoga has been practised in India for centuries, it has not reached the masses properly. 
+            Yoga is not just about moving your hands and legs; it’s a much deeper discipline that requires a guru 
+            to guide you to its entirety. That’s exactly what happened during the three days of Mahaprabhu Ji’s 
+            yoga camp by Yogacharya Amit Dev at Delhi’s Chhatrasal Stadium, which culminated on Monday evening. 
+            During the weekend, dozens of men and women learned yoga techniques that will lead them to a healthier life.
+        </p>
+
+        <h2 class="text-2xl font-semibold text-gray-800 mt-6">NEW DELHI</h2>
+
+        <p class="text-gray-700 mt-4">
+            At the end of the camp, disciples were full of life. Their joyful faces told the story of transformation 
+            and rejuvenation. The camp began with the application of pure cow’s medicated ghee in the nostrils 
+            of the disciples—an ancient practice that helps to unblock emotions in the respiratory tract, improve breathing patterns, 
+            calm heightened prana in the mind, relax muscles, and induce tranquility.
+        </p>
+
+        <p class="text-gray-700 mt-4">
+            Several distinguished guests blessed the camp with their presence. Among them was the first daughter of India, 
+            Smt. Sharmishtha Mukherjee Ji. Other esteemed guests included AICC’s All India Incharge PC Chacko, BJP Vice President 
+            Rajiv Babbar, bodybuilding champion Shashi, Delhi judge Shri Naresh Malhotra Ji, and several Bollywood and television stars.
+        </p>
+
+        <p class="text-gray-700 mt-4">
+            AIATF Chairman, M.S. Bitta Ji, shared his experience of practicing Mahaprabhu Ji’s yoga under the guidance 
+            of Yogacharya Amit Dev Ji for years. He emphasized that our body is a temple of God, and we must preserve it 
+            through yoga. He also spoke about various kriyas practised in yoga.
+        </p>
+
+        <p class="text-gray-700 mt-4">
+            Yogacharya Amit Dev Ji’s family has been dedicated to healing and teaching yoga for generations. 
+            His organization, Yog Abhyas Ashram, was established in 1888 by his forefathers, and he continues 
+            to carry forward this legacy in the 21st century.
+        </p>
+
+        <p class="text-gray-700 mt-4 font-bold">
+            Join the movement and experience the transformative power of yoga with Yogacharya Amit Dev Ji.
+        </p>
+
+        <!-- Social Media Links Banner -->
+        <div class="flex space-x-4 mt-6">
+            <a href="https://www.facebook.com/swamiamitdev" target="_blank" class="hover:text-blue-600"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://x.com/swamiamitdev" target="_blank" class="hover:text-blue-400"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/swamiamitdev/" target="_blank" class="hover:text-blue-700"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/swamiamitdev/" target="_blank" class="hover:text-pink-600"><i class="fab fa-instagram"></i></a>
+            <a href="https://api.whatsapp.com/send/?phone=911140000777&text&type=phone_number&app_absent=0" target="_blank" class="hover:text-green-500"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.youtube.com/@YogacharyaAmitDev" target="_blank" class="hover:text-red-600"><i class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+
+    <!-- Right Section: Event Info & Query Form (1/4 Width) -->
+    <div class="w-1/4 flex flex-col ml-6 space-y-6">
+        <!-- Event Information Box -->
+        <div class="bg-orange-200 p-6 rounded-lg shadow-lg">
+            <h2 class="text-2xl font-extrabold text-gray-800 mb-4 text-center">Event Information</h2>
+            <h3 class="text-xl font-bold text-gray-800 mb-4 text-center">Mahaprabhu Ji’s Yoga Camp</h3>
+            <p><strong>Date:</strong> 26 July, 2017</p>
+            <p><strong>Time:</strong> 08:00 AM</p>
+            <p><strong>Venue:</strong> Chhatrasal Stadium, Delhi</p>
+            <p><strong>Organizer:</strong> Shri Yog Abhyas Ashram Trust [Regd.]</p>
+            <p><strong>Category:</strong> Yoga Camps</p>
+        </div>
+
+        <!-- Query Form Box -->
+        <div class="bg-orange-200 p-6 rounded-lg shadow-lg text-center">
+            <h2 class="text-xl font-bold text-gray-800 mb-2">Query</h2>
+            <p class="mb-4 font-semibold">Mahaprabhu Ji’s Yoga Camp</p>
+
+            <form id="queryForm">
+                <div class="mb-4 text-left">
+                    <label class="block text-gray-700 font-bold mb-2" for="name">Name *</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name here" class="w-full px-3 py-2 border rounded-lg">
+                    <p class="text-red-500 font-bold hidden" id="nameError">Name is required.</p>
+                </div>
+
+                <div class="mb-4 text-left">
+                    <label class="block text-gray-700 font-bold mb-2" for="email">Email *</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address here" class="w-full px-3 py-2 border rounded-lg">
+                    <p class="text-red-500 font-bold hidden" id="emailError">Email is required.</p>
+                </div>
+
+                <div class="mb-4 text-left">
+                    <label class="block text-gray-700 font-bold mb-2" for="message">Message *</label>
+                    <textarea id="message" name="message" placeholder="Type your message here..." class="w-full h-32 px-3 py-2 border rounded-lg"></textarea>
+                    <p class="text-red-500 font-bold hidden" id="messageError">Message is required.</p>
+                </div>
+
+                <button type="submit" class="w-full bg-orange-500 text-white py-2 rounded-lg hover:bg-orange-600">
+                    Submit
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    document.getElementById("queryForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        let isValid = true;
+
+        // Get input values
+        let name = document.getElementById("name").value.trim();
+        let email = document.getElementById("email").value.trim();
+        let message = document.getElementById("message").value.trim();
+
+        // Validate Name
+        if (!name) {
+            document.getElementById("nameError").classList.remove("hidden");
+            isValid = false;
+        } else {
+            document.getElementById("nameError").classList.add("hidden");
+        }
+
+        // Validate Email
+        if (!email) {
+            document.getElementById("emailError").classList.remove("hidden");
+            isValid = false;
+        } else {
+            document.getElementById("emailError").classList.add("hidden");
+        }
+
+        // Validate Message
+        if (!message) {
+            document.getElementById("messageError").classList.remove("hidden");
+            isValid = false;
+        } else {
+            document.getElementById("messageError").classList.add("hidden");
+        }
+
+        // Submit form if valid
+        if (isValid) {
+            this.submit();
+        }
+    });
+</script>
+</div>
+</div>
+
+<div class="w-1/2 mx-auto flex justify-between items-center bg-gray-100 py-4 px-6 border-t border-gray-300">
+    <a href="/event2" id="prev-btn"
+       class="bg-orange-500 text-white font-semibold py-2 px-6 rounded-lg shadow-md hover:bg-orange-600 transition">
+        Previous Event
+    </a>
+
+    <a href="/event3" id="next-btn"
+       class="bg-orange-500 text-white font-semibold py-2 px-6 rounded-lg shadow-md hover:bg-orange-600 transition">
+        Next Event
+    </a>
+</div>
+
+<script>
+    // Get the current event file name (e.g., event1.html, event2.html)
+    const currentFile = window.location.pathname.split("/").pop(); // Extract file name
+    const eventMatch = currentFile.match(/event(\d+)\.html/); // Match eventX.html
+
+    if (eventMatch) {
+        const eventNumber = parseInt(eventMatch[1]); // Extract event number
+
+        // Get Previous and Next buttons
+        const prevBtn = document.getElementById("prev-btn");
+        const nextBtn = document.getElementById("next-btn");
+
+        // Set up navigation based on event number
+        if (eventNumber === 1) {
+            // Event 1: Only Previous, No Next
+            prevBtn.href = `event2.html`;
+            prevBtn.style.display = "inline-block";
+            nextBtn.style.display = "none";
+        } else if (eventNumber === 4) {
+            // Event 4: Only Next, No Previous
+            prevBtn.style.display = "none";
+            nextBtn.href = `event3.html`;
+            nextBtn.style.display = "inline-block";
+        } else {
+            // Events 2 & 3: Show Both Previous and Next
+            prevBtn.href = `event${eventNumber + 1}.html`;
+            prevBtn.style.display = "inline-block";
+            nextBtn.href = `event${eventNumber - 1}.html`;
+            nextBtn.style.display = "inline-block";
+        }
+    }
+</script>
+    <!-- ✅ Footer Section (Dynamically Loaded, Removed mb-16) -->
+    <div id="footer-container" class="mt-10"></div>
+
+</body>
+</html>

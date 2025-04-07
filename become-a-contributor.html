@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview and History</title>
+    
+    <!-- ✅ Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- ✅ Font Awesome (Ensures Social Icons Load) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // ✅ Load header.html
+            fetch("header.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("header-container").innerHTML = data;
+                })
+                .catch(error => console.error("Error loading header:", error));
+
+            // ✅ Load footer.html
+            fetch("footer.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("footer-container").innerHTML = data;
+                })
+                .catch(error => console.error("Error loading footer:", error));
+        });
+    </script>
+
+    <style>
+        /* ✅ Ensure header (black banner + navbar) is pinned */
+        #header-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+        }
+
+        /* ✅ Add padding to body to prevent content from overlapping navbar */
+        body {
+            padding-top: 100px; /* Adjust based on navbar height */
+        }
+
+        /* ✅ Video Section Styles */
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 100vh; /* Full screen */
+            overflow: hidden;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ✅ Text Positioned at Bottom Middle */
+        .video-text {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+        }
+
+        /* ✅ View Events Button (Matches Navbar Donate Button) */
+        .view-events-btn {
+            position: absolute;
+            bottom: 10%;
+            left: 5%;
+            background-color: #f97316; /* orange-500 */
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        .view-events-btn:hover {
+            background-color: #ea580c; /* Hover color - orange-600 */
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- ✅ Header Section (Black Banner + Navbar) -->
+    <div id="header-container"></div>
+       
+    </header>
+
+<div class="w-3/4 mx-auto bg-orange-50 p-8 rounded-lg shadow-md my-10">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-6">
+        Get started on this life-transforming journey that brings you real peace and helps you reconnect with yourself.
+    </h2>
+
+    <form action="#" method="POST" class="space-y-4">
+        <!-- Name -->
+        <div>
+            <label class="block text-gray-700 font-medium">Name *</label>
+            <input type="text" name="name" required placeholder="Enter your full name here"
+                class="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
+        </div>
+
+        <!-- Email -->
+        <div>
+            <label class="block text-gray-700 font-medium">Email *</label>
+            <input type="email" name="email" required placeholder="Enter your email address here"
+                class="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
+        </div>
+
+        <!-- Mobile -->
+        <div>
+            <label class="block text-gray-700 font-medium">Mobile *</label>
+            <input type="tel" name="mobile" required placeholder="Enter your phone number here"
+                class="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
+        </div>
+
+        <!-- Address -->
+        <div>
+            <label class="block text-gray-700 font-medium">Address</label>
+            <input type="text" name="address" placeholder="Enter your address here"
+                class="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
+        </div>
+
+        <!-- Deeksha Yes/No -->
+        <div>
+            <label class="block text-gray-700 font-medium">Deeksha</label>
+            <div class="flex gap-4 mt-1">
+                <label class="flex items-center">
+                    <input type="radio" name="deeksha" value="yes" required class="text-orange-500 focus:ring-orange-500">
+                    <span class="ml-2 text-gray-700">Yes</span>
+                </label>
+                <label class="flex items-center">
+                    <input type="radio" name="deeksha" value="no" required class="text-orange-500 focus:ring-orange-500">
+                    <span class="ml-2 text-gray-700">No</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- If Yes: Deeksha Date -->
+        <div id="deeksha-date" class="hidden">
+            <label class="block text-gray-700 font-medium">If Yes, Enter Date (dd-mm-yyyy)</label>
+            <input type="date" name="deeksha_date"
+                class="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
+        </div>
+
+        <!-- Contribution Type -->
+        <div>
+            <label class="block text-gray-700 font-medium">Contribution Type *</label>
+            <select name="contribution_type" required
+                class="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
+                <option value="" disabled selected>Select Your Option</option>
+                <option value="donation">Donation</option>
+                <option value="volunteering">Volunteering</option>
+                <option value="teaching">Teaching</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <!-- Message -->
+        <div>
+            <label class="block text-gray-700 font-medium">Message</label>
+            <textarea name="message" rows="4" placeholder="Type your message here..."
+                class="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="flex justify-center">
+            <button type="submit"
+                class="bg-orange-500 text-white font-semibold py-3 px-6 rounded-md shadow-md hover:bg-orange-600 transition">
+                Submit
+            </button>
+        </div>
+    </form>
+</div>
+
+<script>
+    // Show date field when "Yes" is selected
+    document.querySelectorAll('input[name="deeksha"]').forEach((radio) => {
+        radio.addEventListener('change', function() {
+            const dateField = document.getElementById('deeksha-date');
+            if (this.value === "yes") {
+                dateField.classList.remove("hidden");
+            } else {
+                dateField.classList.add("hidden");
+            }
+        });
+    });
+</script>
+
+
+
+    <!-- ✅ Footer Section (Dynamically Loaded, Removed mb-16) -->
+    <div id="footer-container" class="mt-4"></div>
+
+</body>
+</html>

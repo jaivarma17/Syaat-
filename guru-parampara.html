@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guru Parampara</title>
+    
+    <!-- ✅ Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- ✅ Font Awesome (Ensures Social Icons Load) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // ✅ Load header.html
+            fetch("header.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("header-container").innerHTML = data;
+                })
+                .catch(error => console.error("Error loading header:", error));
+
+            // ✅ Load footer.html
+            fetch("footer.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("footer-container").innerHTML = data;
+                })
+                .catch(error => console.error("Error loading footer:", error));
+        });
+    </script>
+
+    <style>
+        /* ✅ Ensure header (black banner + navbar) is pinned */
+        #header-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+        }
+
+        /* ✅ Add padding to body to prevent content from overlapping navbar */
+        body {
+            padding-top: 100px; /* Adjust based on navbar height */
+        }
+
+        /* ✅ Video Section Styles */
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 100vh; /* Full screen */
+            overflow: hidden;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ✅ Text Positioned at Bottom Middle */
+        .video-text {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+        }
+
+        /* ✅ View Events Button (Matches Navbar Donate Button) */
+        .view-events-btn {
+            position: absolute;
+            bottom: 10%;
+            left: 5%;
+            background-color: #f97316; /* orange-500 */
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        .view-events-btn:hover {
+            background-color: #ea580c; /* Hover color - orange-600 */
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- ✅ Header Section (Black Banner + Navbar) -->
+    <div id="header-container"></div>
+       
+    </header>
+
+<!-- Guru Parampara Section -->
+<section class="bg-orange-50 py-12 mt-10">
+  <div class="container mx-auto px-6">
+    <div class="text-center mb-10">
+      <h1 class="text-4xl font-extrabold text-orange-500 mb-4">Guru Parampara</h1>
+      <p class="text-lg text-gray-700 italic">The literal meaning of Guru is the "remover of darkness"</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <!-- Text Section -->
+      <div class="text-gray-700 space-y-6">
+        <p>
+          A guru is a person who enlightens the inner consciousness of disciples or followers and fills it with knowledge, giving decisive power and teaching him/her the right way of living.
+        </p>
+        <p>
+          <strong>Parampara</strong> is the uninterrupted succession of any ritual.
+        </p>
+        <h2 class="text-2xl font-semibold text-orange-500">About Guru Parampara</h2>
+        <p>
+          Combination of two Sanskrit words, ‘Guru Parampara’ is a traditional ritual where an organization has its leading body as a ‘Guru’ or leader. The leading authority or ‘Guru’ guides all the disciples to act fittingly and makes sure they are on the right track.
+        </p>
+        <p>
+          Mental and physical empowerment of the followers in order to uplift their character and bring out the best in them is the main goal of any guru.
+        </p>
+        <p>
+          Adopting this practice from the oldest existing Dharma i.e. Hinduism or Vedic culture, we believe that everyone needs one life guide or ‘Guru’ to teach him/her the real purpose of life.
+        </p>
+      </div>
+
+      <!-- Image Section -->
+      <div class="rounded-lg shadow-lg overflow-hidden">
+        <img src="images/guru-parampara.jpg" alt="Guru Parampara" class="w-full h-auto object-cover rounded-md">
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- ✅ Footer Section (Dynamically Loaded, Removed mb-16) -->
+    <div id="footer-container" class="mt-0"></div>
+
+</body>
+</html>
+

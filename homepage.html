@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    
+    <!-- ✅ Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- ✅ Font Awesome (Ensures Social Icons Load) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // ✅ Load header.html
+            fetch("header.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("header-container").innerHTML = data;
+                })
+                .catch(error => console.error("Error loading header:", error));
+
+            // ✅ Load footer.html
+            fetch("footer.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("footer-container").innerHTML = data;
+                })
+                .catch(error => console.error("Error loading footer:", error));
+        });
+    </script>
+
+    <style>
+        /* ✅ Ensure header (black banner + navbar) is pinned */
+        #header-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+        }
+
+        /* ✅ Add padding to body to prevent content from overlapping navbar */
+        body {
+            padding-top: 100px; /* Adjust based on navbar height */
+        }
+
+        /* ✅ Video Section Styles */
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 100vh; /* Full screen */
+            overflow: hidden;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ✅ Text Positioned at Bottom Middle */
+        .video-text {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+        }
+
+        /* ✅ View Events Button (Matches Navbar Donate Button) */
+        .view-events-btn {
+            position: absolute;
+            bottom: 10%;
+            left: 5%;
+            background-color: #f97316; /* orange-500 */
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        .view-events-btn:hover {
+            background-color: #ea580c; /* Hover color - orange-600 */
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- ✅ Header Section (Black Banner + Navbar) -->
+    <div id="header-container"></div>
+
+    <!-- 🟠 Video Section -->
+    <header class="video-container">
+        
+        <!-- Background Video -->
+        <video autoplay loop muted playsinline>
+            <source src="images/homepage-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <!-- ✅ Overlay Text (Bottom Middle) -->
+        <h1 class="video-text">Find Your Inner Peace Through Yog</h1>
+
+        <!-- ✅ View Events Button (Bottom Left) -->
+        <a href="events.html" class="view-events-btn">
+            View Events
+        </a>
+    </header>
+
+    <!-- ✅ Text and Video Section -->
+    <div class="container mx-auto px-6 mt-10 mb-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-40 items-start">
+            <!-- 🟠 Text Section -->
+            <div class="text-left">
+                <p class="text-gray-700 text-lg leading-relaxed">
+                    Welcome to Shri Yog Abhyas Ashram Trust [Regd.], a venerable institution with roots tracing back to 1888, when the First Guru Gaddi Yogeshwar Ramlal Bhagwan laid its foundation. Committed to the timeless principles of Yog, our non-profit organization has evolved into a beacon of tranquility and wellness, dedicated to advancing and disseminating Yog practices worldwide.
+                </p>
+                <p class="mt-4 text-gray-700 text-lg leading-relaxed">
+                    At the heart of our mission lies a profound belief in the transformative power of Yog as a holistic remedy for human ailments. Embracing Yog as a scientific solution, we strive to integrate its principles into the fabric of everyday life. With a vision to establish Yogic colleges and schools for the betterment of society, we tirelessly pursue avenues for research, publication, and education.
+                </p>
+                <p class="mt-4 text-gray-700 text-lg leading-relaxed">
+                    Our impact extends far beyond the confines of our ashram, as we actively host camps both within India and abroad, spreading the ethos of Yog to every corner of the globe. Through these immersive experiences, we guide participants of all ages in the practice of Yogic Kriyas, Asanas, Pranayamas, and Mudras, nurturing not only physical well-being but also inner harmony.
+                </p>
+                <p class="mt-4 text-gray-700 text-lg leading-relaxed">
+                    Today, the SYAAT International Yogic Cure and Research Center stands as a testament to our dedication, with 32 locations nationwide serving as hubs of healing and enlightenment. Join us on this journey towards a healthier, more harmonious world, where the wisdom of Yog illuminates every path.
+                </p>
+            </div>
+
+            <!-- 🟠 Video Section -->
+            <div class="flex flex-col gap-6 w-3/4 h-full">
+                <!-- First Video -->
+                <iframe 
+                    class="w-full aspect-video rounded-lg shadow-lg flex-1 min-h-[200px] max-h-[50%]"
+                    src="https://www.youtube.com/embed/ifLLU_obXQY?start=2" 
+                    title="YouTube 1" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+
+                <!-- Second Video -->
+                <iframe 
+                    class="w-full aspect-video rounded-lg shadow-lg flex-1 min-h-[200px] max-h-[50%]"
+                    src="https://www.youtube.com/embed/rWGpBw8WJak" 
+                    title="YouTube 2" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+    </div>
+
+
+<!-- Yog For Section-->
+<div class="bg-gray-800 text-white py-8 mt-6 mb-2">
+    <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+        <!-- First Section -->
+        <div class="p-6 bg-gray-800 text-white rounded-lg shadow-md transition duration-300 hover:bg-orange-500 hover:text-white cursor-pointer" onclick="openPopup('popup1')">
+            <h2 class="text-xl font-bold">Yog for Wellness</h2>
+        </div>
+
+        <!-- Second Section -->
+        <div class="p-6 bg-gray-800 text-white rounded-lg shadow-md transition duration-300 hover:bg-orange-500 hover:text-white cursor-pointer" onclick="openPopup('popup2')">
+            <h2 class="text-xl font-bold">Yog for Mindfulness</h2>
+        </div>
+
+        <!-- Third Section -->
+        <div class="p-6 bg-gray-800 text-white rounded-lg shadow-md transition duration-300 hover:bg-orange-500 hover:text-white cursor-pointer" onclick="openPopup('popup3')">
+            <h2 class="text-xl font-bold">Yog for Spirituality</h2>
+        </div>
+    </div>
+</div>
+
+<!-- Blurred Background Effect -->
+<div id="blur-bg" class="hidden fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-40"></div>
+
+<!-- Popups -->
+<div id="popup1" class="popup hidden fixed inset-0 flex items-center justify-center z-50" onclick="closePopup(event, 'popup1')">
+    <div class="bg-orange-500 text-white p-12 rounded-lg shadow-lg max-w-2xl w-full text-center" onclick="event.stopPropagation();">
+        <h2 class="text-2xl font-bold">Yog for Wellness</h2>
+        <p class="mt-4 text-lg">Yog encourages holistic wellness. As such, it does not focus on physical health alone, it also brings about a healthy mind that is self-aware of thoughts and habits.</p>
+        <button onclick="closePopup(event, 'popup1')" class="mt-6 px-6 py-3 bg-white text-orange-500 rounded-lg font-bold">Close</button>
+    </div>
+</div>
+
+<div id="popup2" class="popup hidden fixed inset-0 flex items-center justify-center z-50" onclick="closePopup(event, 'popup2')">
+    <div class="bg-orange-500 text-white p-12 rounded-lg shadow-lg max-w-2xl w-full text-center" onclick="event.stopPropagation();">
+        <h2 class="text-2xl font-bold">Yog for Mindfulness</h2>
+        <p class="mt-4 text-lg">The benefits of Yog on the Body, Mind, and Spirit are many. As it is, one of the main areas of focus when practicing Yog is developing Mindfulness.</p>
+        <button onclick="closePopup(event, 'popup2')" class="mt-6 px-6 py-3 bg-white text-orange-500 rounded-lg font-bold">Close</button>
+    </div>
+</div>
+
+<div id="popup3" class="popup hidden fixed inset-0 flex items-center justify-center z-50" onclick="closePopup(event, 'popup3')">
+    <div class="bg-orange-500 text-white p-12 rounded-lg shadow-lg max-w-2xl w-full text-center" onclick="event.stopPropagation();">
+        <h2 class="text-2xl font-bold">Yog for Spirituality</h2>
+        <p class="mt-4 text-lg">Yog helps to unify the three aspects of our being - Body, Mind, and Spirit, with a Spiritual Force or Universal Force.</p>
+        <button onclick="closePopup(event, 'popup3')" class="mt-6 px-6 py-3 bg-white text-orange-500 rounded-lg font-bold">Close</button>
+    </div>
+</div>
+
+<script>
+    function openPopup(id) {
+        document.getElementById(id).classList.remove("hidden");
+        document.getElementById('blur-bg').classList.remove("hidden");
+        document.body.classList.add("overflow-hidden"); // Disable scrolling
+    }
+
+    function closePopup(event, id) {
+        let popup = document.getElementById(id);
+        if (event.target === popup || event.target.tagName === "BUTTON") {
+            popup.classList.add("hidden");
+            document.getElementById('blur-bg').classList.add("hidden");
+            document.body.classList.remove("overflow-hidden"); // Enable scrolling back
+        }
+    }
+</script>
+
+
+<!-- ✅ Three-Image Section (Modern Look) -->
+<section class="container mx-auto px-6 mb-10">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- 🟠 Founders Image -->
+        <a href="overview.html" class="relative group block overflow-hidden rounded-lg shadow-lg">
+            <div class="overflow-hidden">
+                <img src="images/overview.jpg" alt="Overview" class="w-full h-96 object-cover transition-transform duration-300 transform group-hover:scale-105 group-hover:origin-center">
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6">
+                <span class="text-white text-2xl font-semibold">Founders <span class="ml-2">&rsaquo;</span></span>
+            </div>
+        </a>
+
+        <!-- 🟠 Guru Parampara Image -->
+        <a href="guru-parampara.html" class="relative group block overflow-hidden rounded-lg shadow-lg">
+            <div class="overflow-hidden">
+                <img src="images/guru-parampara.jpg" alt="Guru-Parampara" class="w-full h-96 object-cover transition-transform duration-300 transform group-hover:scale-105 group-hover:origin-center">
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6">
+                <span class="text-white text-2xl font-semibold">Guru Parampara <span class="ml-2">&rsaquo;</span></span>
+            </div>
+        </a>
+
+        <!-- 🟠 Aim Image -->
+        <a href="aims-and-objectives.html" class="relative group block overflow-hidden rounded-lg shadow-lg">
+            <div class="overflow-hidden">
+                <img src="images/homepage-image1.webp" alt="Aims" class="w-full h-96 object-cover transition-transform duration-300 transform group-hover:scale-105 group-hover:origin-center">
+            </div>
+            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6">
+                <span class="text-white text-2xl font-semibold">Aim <span class="ml-2">&rsaquo;</span></span>
+            </div>
+        </a>
+    </div>
+</section>
+
+
+
+<!-- Banner Section with Smooth Scrolling Text -->
+<div class="bg-orange-500 text-white py-4 mb-10 overflow-hidden relative">
+    <div class="marquee">
+        <div class="marquee-content">
+            <span>130 Years of Legacy</span>
+            <span>1 Million+ Volunteers</span>
+            <span>70+ Branches</span>
+            <span>1000+ Camps Globally</span>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span> <!-- Extra Space -->
+        </div>
+        <div class="marquee-content" aria-hidden="true">
+            <span>130 Years of Legacy</span>
+            <span>1 Million+ Volunteers</span>
+            <span>70+ Branches</span>
+            <span>1000+ Camps Globally</span>
+            <span>&nbsp;&nbsp;&nbsp;&nbsp;</span> <!-- Extra Space -->
+        </div>
+    </div>
+</div>
+
+<!-- Smooth Scrolling Animation -->
+<style>
+    /* Ensure background matches buttons */
+    .bg-orange-500 {
+        background-color: #f97316; /* Exact Tailwind 'bg-orange-500' */
+    }
+
+    .marquee {
+        display: flex;
+        width: 200%;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .marquee-content {
+        display: flex;
+        gap: 80px; /* Adjust spacing between words */
+        font-size: 2rem;
+        font-weight: 900;
+        white-space: nowrap;
+        flex-shrink: 0;
+        animation: marquee-scroll 10s linear infinite;
+    }
+
+    @keyframes marquee-scroll {
+        from {
+            transform: translateX(-100%);
+        }
+        to {
+            transform: translateX(0%);
+        }
+    }
+</style>
+
+
+<!-- ✅ Blog Section (Above Footer) -->
+<section class="container mx-auto px-6 mb-10">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Latest Blogs</h2>
+    
+    <div id="blog-posts" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- 🟠 Blog Posts Will Be Loaded Here -->
+    </div>
+
+    <!-- ✅ View More & View Less Buttons -->
+    <div class="text-center mt-6">
+        <button id="viewMoreBtn" class="bg-orange-500 text-white font-bold px-6 py-2 rounded-lg hidden">
+            View More
+        </button>
+        <button id="viewLessBtn" class="bg-gray-600 text-white font-bold px-6 py-2 rounded-lg hidden">
+            View Less
+        </button>
+    </div>
+</section>
+
+<style>
+    /* ✅ Hover Effect for Blog Cards */
+    .blog-card {
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    /* ✅ On Hover: Scale Up & Add Shadow */
+    .blog-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const blogContainer = document.getElementById("blog-posts");
+        const viewMoreBtn = document.getElementById("viewMoreBtn");
+        const viewLessBtn = document.getElementById("viewLessBtn");
+
+        let allPosts = []; // Stores all blog posts
+        let visibleCount = 3; // Initially show only 3 blogs
+
+        // ✅ Fetch Blog Posts from WordPress
+        fetch("https://www.yog.cc/wp-json/wp/v2/posts?_embed")
+            .then(response => response.json())
+            .then(posts => {
+                allPosts = posts; // Store all fetched posts
+                displayBlogs(); // Show initial blogs
+
+                // ✅ Show "View More" button if more than 3 blogs exist
+                if (allPosts.length > visibleCount) {
+                    viewMoreBtn.classList.remove("hidden");
+                }
+            })
+            .catch(error => console.error("Error fetching posts:", error));
+
+        // ✅ Function to Display Blogs
+        function displayBlogs() {
+            let output = '';
+
+            allPosts.slice(0, visibleCount).forEach(post => {
+                let imageUrl = post._embedded?.['wp:featuredmedia']?.[0]?.source_url || "images/default-blog.jpg";
+
+                output += `
+                    <div class="blog-card bg-white rounded-lg shadow-lg overflow-hidden">
+                        <img src="${imageUrl}" alt="${post.title.rendered}" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-900">${post.title.rendered}</h3>
+                            <p class="text-gray-700 mt-2">${post.excerpt.rendered}</p>
+                            <a href="${post.link}" target="_blank" class="text-orange-500 font-bold mt-4 inline-block">Read More &rarr;</a>
+                        </div>
+                    </div>
+                `;
+            });
+
+            blogContainer.innerHTML = output;
+
+            // ✅ Manage Button Visibility
+            updateButtonVisibility();
+        }
+
+        // ✅ Function to Manage Button Visibility
+        function updateButtonVisibility() {
+            // Show "View More" only if more blogs are available
+            if (visibleCount < allPosts.length) {
+                viewMoreBtn.classList.remove("hidden");
+            } else {
+                viewMoreBtn.classList.add("hidden");
+            }
+
+            // Show "View Less" only if more than 3 blogs are visible
+            if (visibleCount > 3) {
+                viewLessBtn.classList.remove("hidden");
+            } else {
+                viewLessBtn.classList.add("hidden");
+            }
+        }
+
+        // ✅ "View More" Button Click Event
+        viewMoreBtn.addEventListener("click", function () {
+            visibleCount += 3; // Show 3 more blogs
+            displayBlogs();
+        });
+
+        // ✅ "View Less" Button Click Event
+        viewLessBtn.addEventListener("click", function () {
+            visibleCount = Math.max(3, visibleCount - 3); // Hide 3 blogs (minimum 3)
+            displayBlogs();
+        });
+    });
+</script>
+
+
+<!-- ✅ Photo Gallery Section (Above Footer) -->
+<section class="container mx-auto px-6 mb-10">
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Photo Gallery</h2>
+    
+    <div id="gallery" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+        <!-- 🟠 Gallery Images Will Be Loaded Here -->
+    </div>
+
+    <!-- ✅ View More & View Less Buttons -->
+    <div class="text-center mt-6">
+        <button id="galleryViewMoreBtn" class="bg-orange-500 text-white font-bold px-6 py-2 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-200 hidden">
+            View More
+        </button>
+        <button id="galleryViewLessBtn" class="bg-gray-600 text-white font-bold px-6 py-2 rounded-lg shadow-lg transform hover:scale-105 transition-all duration-200 hidden">
+            View Less
+        </button>
+    </div>
+</section>
+
+<style>
+    /* ✅ Hover Effect for Gallery Containers */
+    .gallery-item {
+        position: relative;
+        background-color: white;
+        border-radius: 15px; /* More rounded corners for a smoother look */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* ✅ On Hover: Scale Up and Add Shadow */
+    .gallery-item:hover {
+        transform: translateY(-10px); /* Slight lift effect */
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    /* ✅ Gallery Image Styling */
+    .gallery-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+        border-radius: 15px; /* Make images have rounded corners */
+    }
+
+    /* ✅ On Hover: Scale Up the Image */
+    .gallery-item:hover .gallery-img {
+        transform: scale(1.05);
+    }
+
+    /* ✅ Optional: Improve the container size and responsiveness */
+    @media (max-width: 768px) {
+        .gallery-item {
+            padding-top: 100%; /* Maintain square shape for smaller screens */
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const galleryContainer = document.getElementById("gallery");
+        const galleryViewMoreBtn = document.getElementById("galleryViewMoreBtn");
+        const galleryViewLessBtn = document.getElementById("galleryViewLessBtn");
+
+        const galleryImages = [
+            "image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg", "image5.jpg", "image6.jpg",
+            "event2.jpg", "event3.jpg", "event4.jpg"
+        ];
+
+        let visibleGalleryCount = 4; // Initially show 4 images
+
+        function displayGallery() {
+            let output = '';
+
+            galleryImages.slice(0, visibleGalleryCount).forEach(image => {
+                output += `
+                    <div class="gallery-item">
+                        <img src="images/${image}" alt="${image}" class="gallery-img">
+                    </div>
+                `;
+            });
+
+            galleryContainer.innerHTML = output;
+
+            // ✅ Manage Button Visibility
+            updateGalleryButtonVisibility();
+        }
+
+        function updateGalleryButtonVisibility() {
+            if (visibleGalleryCount < galleryImages.length) {
+                galleryViewMoreBtn.classList.remove("hidden");
+            } else {
+                galleryViewMoreBtn.classList.add("hidden");
+            }
+
+            if (visibleGalleryCount > 4) {
+                galleryViewLessBtn.classList.remove("hidden");
+            } else {
+                galleryViewLessBtn.classList.add("hidden");
+            }
+        }
+
+        // ✅ View More Button Click
+        galleryViewMoreBtn.addEventListener("click", function () {
+            visibleGalleryCount += 3; // Show 3 more images
+            displayGallery();
+        });
+
+        // ✅ View Less Button Click
+        galleryViewLessBtn.addEventListener("click", function () {
+            visibleGalleryCount = Math.max(4, visibleGalleryCount - 3); // Hide 3 images (minimum 4)
+            displayGallery();
+        });
+
+        displayGallery();
+    });
+</script>
+
+
+
+    <!-- ✅ Footer Section (Dynamically Loaded, Removed mb-16) -->
+    <div id="footer-container" class="mt-10"></div>
+
+</body>
+</html>

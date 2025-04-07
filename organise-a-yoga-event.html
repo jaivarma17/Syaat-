@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview and History</title>
+    
+    <!-- ✅ Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- ✅ Font Awesome (Ensures Social Icons Load) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // ✅ Load header.html
+            fetch("header.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("header-container").innerHTML = data;
+                })
+                .catch(error => console.error("Error loading header:", error));
+
+            // ✅ Load footer.html
+            fetch("footer.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("footer-container").innerHTML = data;
+                })
+                .catch(error => console.error("Error loading footer:", error));
+        });
+    </script>
+
+    <style>
+        /* ✅ Ensure header (black banner + navbar) is pinned */
+        #header-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+        }
+
+        /* ✅ Add padding to body to prevent content from overlapping navbar */
+        body {
+            padding-top: 100px; /* Adjust based on navbar height */
+        }
+
+        /* ✅ Video Section Styles */
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 100vh; /* Full screen */
+            overflow: hidden;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ✅ Text Positioned at Bottom Middle */
+        .video-text {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+        }
+
+        /* ✅ View Events Button (Matches Navbar Donate Button) */
+        .view-events-btn {
+            position: absolute;
+            bottom: 10%;
+            left: 5%;
+            background-color: #f97316; /* orange-500 */
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        .view-events-btn:hover {
+            background-color: #ea580c; /* Hover color - orange-600 */
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- ✅ Header Section (Black Banner + Navbar) -->
+    <div id="header-container"></div>
+       
+    </header>
+
+<div class="w-3/4 mx-auto bg-orange-50 p-8 rounded-lg shadow-md my-10">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-6">
+        If you are good at organising workshops and special events, then join us!
+    </h2>
+
+    <form action="#" method="POST" class="space-y-4">
+        <!-- Name -->
+        <div>
+            <label class="block text-gray-700 font-medium">Name *</label>
+            <input type="text" name="name" required placeholder="Enter your full name here"
+                class="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
+        </div>
+
+        <!-- Email -->
+        <div>
+            <label class="block text-gray-700 font-medium">Email *</label>
+            <input type="email" name="email" required placeholder="Enter your email address here"
+                class="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
+        </div>
+
+        <!-- Mobile -->
+        <div>
+            <label class="block text-gray-700 font-medium">Mobile *</label>
+            <input type="tel" name="mobile" required placeholder="Enter your phone number here"
+                class="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
+        </div>
+
+        <!-- Event Location -->
+        <div>
+            <label class="block text-gray-700 font-medium">Where do you want to organise Yoga Event? *</label>
+            <input type="text" name="event_location" required placeholder="Enter your yoga event address here"
+                class="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
+        </div>
+
+        <!-- Event Type -->
+        <div>
+            <label class="block text-gray-700 font-medium">Event Type *</label>
+            <select name="event_type" id="event-type" required
+                class="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
+                <option value="" disabled selected>Select Your Option</option>
+                <option value="workshop">Workshop</option>
+                <option value="corporate_yoga">Corporate Yoga</option>
+                <option value="community_event">Community Event</option>
+                <option value="private_session">Private Session</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <!-- If Other: Event Type Details -->
+        <div id="other-event-type" class="hidden">
+            <label class="block text-gray-700 font-medium">If Other, Please Specify</label>
+            <input type="text" name="other_event_type" placeholder="Enter event type details"
+                class="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
+        </div>
+
+        <!-- Message -->
+        <div>
+            <label class="block text-gray-700 font-medium">Message</label>
+            <textarea name="message" rows="4" placeholder="Type your message here..."
+                class="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="flex justify-center">
+            <button type="submit"
+                class="bg-orange-500 text-white font-semibold py-3 px-6 rounded-md shadow-md hover:bg-orange-600 transition">
+                Submit
+            </button>
+        </div>
+    </form>
+</div>
+
+<script>
+    // Show "If Other, Please Specify" input field when "Other" is selected in Event Type
+    document.getElementById("event-type").addEventListener("change", function() {
+        const otherField = document.getElementById("other-event-type");
+        if (this.value === "other") {
+            otherField.classList.remove("hidden");
+        } else {
+            otherField.classList.add("hidden");
+        }
+    });
+</script>
+
+
+    <!-- ✅ Footer Section (Dynamically Loaded, Removed mb-16) -->
+    <div id="footer-container" class="mt-4"></div>
+
+</body>
+</html>

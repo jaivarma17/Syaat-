@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    
+    <!-- ✅ Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- ✅ Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch("header.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("header-container").innerHTML = data;
+                })
+                .catch(error => console.error("Error loading header:", error));
+
+            fetch("footer.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("footer-container").innerHTML = data;
+                })
+                .catch(error => console.error("Error loading footer:", error));
+        });
+    </script>
+
+    <style>
+        #header-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+        }
+
+        body {
+            padding-top: 100px;
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .video-text {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+        }
+
+        .view-events-btn {
+            position: absolute;
+            bottom: 10%;
+            left: 5%;
+            background-color: #f97316;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        .view-events-btn:hover {
+            background-color: #ea580c;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <!-- ✅ Header Section -->
+    <div id="header-container"></div>
+
+    <!-- ✅ Contact Info Section -->
+    <div class="w-3/4 mx-auto bg-orange-50 p-8 rounded-lg shadow-md my-10">
+        <h2 class="text-3xl font-bold text-center mb-6">CONTACT INFO</h2>
+        <p class="text-lg text-center mb-6">
+            If you wish to associate with Yog Abhyas Ashram Trust or know about our programmes, 
+            contact us at the address given below or give us a call.
+        </p>
+
+        <div class="flex justify-between text-center">
+            <!-- Address -->
+            <div class="w-1/3 px-4">
+                <h3 class="text-2xl font-bold text-orange-500 mb-2">ADDRESS</h3>
+                <p>Yogeshwar DeviDayal Mahamandir,</p>
+                <p>A-777, Block 8, Tilak Nagar,</p>
+                <p>New Delhi - 110018, Delhi, India</p>
+            </div>
+
+            <!-- Phone -->
+            <div class="w-1/3 px-4">
+                <h3 class="text-2xl font-bold text-orange-500 mb-2">PHONE</h3>
+                <p><a href="tel:+911140000700" class="text-blue-600 hover:underline">+91 11 4000 0700</a></p>
+                <p><a href="tel:+919911211777" class="text-blue-600 hover:underline">+91 99 1121 1777</a></p>
+            </div>
+
+            <!-- Email -->
+            <div class="w-1/3 px-4">
+                <h3 class="text-2xl font-bold text-orange-500 mb-2">EMAIL</h3>
+                <p><a href="mailto:info@syaat.org" class="text-blue-600 hover:underline">info@syaat.org</a></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ✅ Location Map -->
+    <div class="mt-8">
+        <h3 class="text-2xl font-bold text-orange-500 mb-4 text-center">OUR LOCATION</h3>
+        <div class="w-full flex justify-center">
+            <iframe 
+                width="80%" height="350" 
+                style="border:0;" 
+                loading="lazy" 
+                allowfullscreen 
+                referrerpolicy="no-referrer-when-downgrade"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.6586941249393!2d77.09641537528935!3d28.639989675660708!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d049e8528cc29%3A0x9ff27901ddb84dee!2sYogeshwar%20DeviDayal%20Mahamandir!5e0!3m2!1sen!2sin!4v1743421423332!5m2!1sen!2sin">
+            </iframe>
+        </div>
+    </div>
+
+    <!-- ✅ Get in Touch Form -->
+    <div class="w-3/4 mx-auto bg-orange-50 p-8 rounded-lg shadow-md my-10">
+        <h2 class="text-3xl font-bold text-center mb-6">GET IN TOUCH</h2>
+
+        <form action="#" method="POST" class="space-y-4">
+            <!-- Name -->
+            <div>
+                <label class="block text-gray-700 font-medium">Name *</label>
+                <input type="text" name="name" required placeholder="Enter your full name here"
+                    class="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
+            </div>
+
+            <!-- Email -->
+            <div>
+                <label class="block text-gray-700 font-medium">Email *</label>
+                <input type="email" name="email" required placeholder="Enter your email address here"
+                    class="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
+            </div>
+
+            <!-- Mobile -->
+            <div>
+                <label class="block text-gray-700 font-medium">Mobile *</label>
+                <input type="tel" name="mobile" required placeholder="Enter your phone number here"
+                    class="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500">
+            </div>
+
+            <!-- Message -->
+            <div>
+                <label class="block text-gray-700 font-medium">Message</label>
+                <textarea name="message" rows="4" placeholder="Type your message here..."
+                    class="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500"></textarea>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="flex justify-center">
+                <button type="submit"
+                    class="bg-orange-500 text-white font-semibold py-3 px-6 rounded-md shadow-md hover:bg-orange-600 transition">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- ✅ Footer -->
+    <div id="footer-container" class="mt-4"></div>
+
+</body>
+</html>

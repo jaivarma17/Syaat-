@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview and History</title>
+    
+    <!-- ✅ Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- ✅ Font Awesome (Ensures Social Icons Load) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // ✅ Load header.html
+            fetch("header.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("header-container").innerHTML = data;
+                })
+                .catch(error => console.error("Error loading header:", error));
+
+            // ✅ Load footer.html
+            fetch("footer.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("footer-container").innerHTML = data;
+                })
+                .catch(error => console.error("Error loading footer:", error));
+        });
+    </script>
+
+    <style>
+        /* ✅ Ensure header (black banner + navbar) is pinned */
+        #header-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+        }
+
+        /* ✅ Add padding to body to prevent content from overlapping navbar */
+        body {
+            padding-top: 100px; /* Adjust based on navbar height */
+        }
+
+        /* ✅ Video Section Styles */
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 100vh; /* Full screen */
+            overflow: hidden;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ✅ Text Positioned at Bottom Middle */
+        .video-text {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+        }
+
+        /* ✅ View Events Button (Matches Navbar Donate Button) */
+        .view-events-btn {
+            position: absolute;
+            bottom: 10%;
+            left: 5%;
+            background-color: #f97316; /* orange-500 */
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        .view-events-btn:hover {
+            background-color: #ea580c; /* Hover color - orange-600 */
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- ✅ Header Section (Black Banner + Navbar) -->
+    <div id="header-container"></div>
+       
+    </header>
+
+<!-- Overview Content Section -->
+<section class="container mx-auto px-6 py-12 mt-10 bg-orange-50">
+    <!-- Text Content -->
+    <div class="flex-1">
+        <p class="text-gray-700 text-lg leading-relaxed text-left">
+            Incepted in 1888 with the birth of the First Guru Gaddi Yogeshwar Ramlal Bhagwan, the mission is now known as Shri Yog Abhyas Ashram Trust [Regd.], a non-profit organization aimed at advancing and propagating Yoga practices to spread peace in the world.
+        </p>
+        <p class="text-gray-700 text-lg leading-relaxed text-left mt-4">
+            Our organization has adopted yoga as a scientific cure for human ailments. Envisioning the concept of Yogic colleges and schools for the country’s and world’s welfare, we are continually working to bring more research works, journals, periodicals, papers, and educational content.
+        </p>
+        <p class="text-gray-700 text-lg leading-relaxed text-left mt-4">
+            Our organization is actively organizing camps inside and outside India to enrich the world with the philosophy of yoga. Through these camps, we supervise the youth (and everyone else) to perform Yogic Kriyas, Asans, Pranayams, and Mudras.
+        </p>
+        <p class="text-gray-700 text-lg leading-relaxed text-left mt-4">
+            Currently, Yogeshwar DeviDayal International Yogic Cure and Research Center has been established at 32 locations nationwide.
+        </p>
+    </div>
+
+<!-- VISION & MISSION & PHILOSOPHY BANNER -->
+<section class="w-full bg-gray-800 text-white py-4 mt-4">
+    <div class="container mx-auto flex flex-col md:flex-row items-center justify-center">
+        <!-- Vision Section -->
+        <div class="w-full md:w-1/3 px-4 py-4 bg-gray-800 text-white rounded-lg shadow-md transition duration-300 hover:bg-orange-500 hover:text-white cursor-pointer text-center" onclick="openPopup('popupVision')">
+            <h2 class="text-2xl font-bold">VISION</h2>
+        </div>
+
+        <!-- Mission Section -->
+        <div class="w-full md:w-1/3 px-4 py-4 bg-gray-800 text-white rounded-lg shadow-md transition duration-300 hover:bg-orange-500 hover:text-white cursor-pointer text-center" onclick="openPopup('popupMission')">
+            <h2 class="text-2xl font-bold">MISSION</h2>
+        </div>
+
+        <!-- PHILOSOPHY Section -->
+        <div class="w-full md:w-1/3 px-4 py-4 bg-gray-800 text-white rounded-lg shadow-md transition duration-300 hover:bg-orange-500 hover:text-white cursor-pointer text-center" onclick="openPopup('popupPHILOSOPHY')">
+            <h2 class="text-2xl font-bold">PHILOSOPHY</h2>
+        </div>
+    </div>
+</section>
+
+<!-- Blurred Background Effect -->
+<div id="blur-bg" class="hidden fixed inset-0 bg-black bg-opacity-50 backdrop-blur-md z-40"></div>
+
+<!-- Vision Popup -->
+<div id="popupVision" class="popup hidden fixed inset-0 flex items-center justify-center z-50" onclick="closePopup(event, 'popupVision')">
+    <div class="bg-orange-500 text-white p-8 rounded-lg shadow-lg max-w-xl w-full text-center" onclick="event.stopPropagation();">
+        <h2 class="text-xl font-bold">VISION</h2>
+        <p class="mt-3 text-base">Yoga is a scientific system, through which humans can over-power the physical and mental senses. 
+            Spiritually uplifting every human soul and making the world a better & healthy place is our vision.</p>
+        <button onclick="closePopup(event, 'popupVision')" class="mt-4 px-4 py-2 bg-white text-orange-500 rounded-lg font-bold">Close</button>
+    </div>
+</div>
+
+<!-- Mission Popup -->
+<div id="popupMission" class="popup hidden fixed inset-0 flex items-center justify-center z-50" onclick="closePopup(event, 'popupMission')">
+    <div class="bg-orange-500 text-white p-8 rounded-lg shadow-lg max-w-xl w-full text-center" onclick="event.stopPropagation();">
+        <h2 class="text-xl font-bold">MISSION</h2>
+        <p class="mt-3 text-base">Our mission is to purify people’s soul, body, and mind. Yoga centers, schools, colleges, temples, and research are the mediating missions, which will take us to the actual goal finally.</p>
+        <button onclick="closePopup(event, 'popupMission')" class="mt-4 px-4 py-2 bg-white text-orange-500 rounded-lg font-bold">Close</button>
+    </div>
+</div>
+
+<!-- Philosophy Popup -->
+<div id="popupPHILOSOPHY" class="popup hidden fixed inset-0 flex items-center justify-center z-50" onclick="closePopup(event, 'popupPHILOSOPHY')">
+    <div class="bg-orange-500 text-white p-8 rounded-lg shadow-lg max-w-xl w-full text-center" onclick="event.stopPropagation();">
+        <h2 class="text-xl font-bold">PHILOSOPHY</h2>
+        <p class="mt-3 text-base">
+            Our yogic center considers yoga as a scientific and spiritual practice, rather than connecting it to religion merely.
+        </p>
+        <p class="mt-3 text-base">
+            Following ancient Guru Parampara ardently, we consider everyone needs guidance (and hence a ‘Guru’) for accomplishing the goals.
+        </p>
+        <button onclick="closePopup(event, 'popupPHILOSOPHY')" class="mt-4 px-4 py-2 bg-white text-orange-500 rounded-lg font-bold">Close</button>
+    </div>
+</div>
+
+<!-- JavaScript for Popup -->
+<script>
+    function openPopup(id) {
+        document.getElementById(id).classList.remove("hidden");
+        document.getElementById('blur-bg').classList.remove("hidden");
+        document.body.classList.add("overflow-hidden"); // Disable scrolling
+    }
+
+    function closePopup(event, id) {
+        let popup = document.getElementById(id);
+        if (event.target === popup || event.target.tagName === "BUTTON") {
+            popup.classList.add("hidden");
+            document.getElementById('blur-bg').classList.add("hidden");
+            document.body.classList.remove("overflow-hidden"); // Enable scrolling back
+        }
+    }
+</script>
+
+<!-- ABOUT THE FOUNDER(S) SECTION WITH ORANGE BACKGROUND -->
+<div class="bg-orange-500 py-10">  <!-- ADDED ORANGE BACKGROUND -->
+
+    <!-- ABOUT THE FOUNDER(S) HEADER -->
+    <h2 class="text-3xl font-bold text-center mb-6 text-white">ABOUT THE FOUNDERS</h2> <!-- TEXT COLOR WHITE FOR VISIBILITY -->
+
+    <!-- FOUNDERS SECTION -->
+    <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 mb-10 mt-0">
+
+        <!-- Founder 1 -->
+        <div class="founder-card bg-white shadow-lg p-4 rounded-lg transition-all duration-300">
+            <img src="images/yogeshwar-ramlal-bhagwan.jpg" alt="Yogeshwar Ramlal Bhagwan" class="w-full rounded-md">
+            <button class="toggle-btn flex justify-between items-center w-full text-left mt-4 font-bold text-lg text-orange-500 focus:outline-none">
+                Yogeshwar Ramlal Bhagwan <span class="text-black text-xl">−</span>
+            </button>
+            <div class="founder-text mt-2 text-gray-700 overflow-hidden transition-all duration-300 open">
+                Mahaprabhu ji was the First Guru Gaddi and the real inceptor of our purest mission in 1888. His innovative soul, incarnated in India, was a true reliever of mental and physical stresses of human. With his hidden secrets of Yoga, Mahaprabhu ji introduced the world with joy of Yogic practices.
+            </div>
+        </div>
+
+        <!-- Founder 2 -->
+        <div class="founder-card bg-white shadow-lg p-4 rounded-lg transition-all duration-300">
+            <img src="images/yogeshwar-mulakhraj-bhagwan.jpg" alt="Yogeshwar Mulakhraj Bhagwan" class="w-full rounded-md">
+            <button class="toggle-btn flex justify-between items-center w-full text-left mt-4 font-bold text-lg text-orange-500 focus:outline-none">
+                Yogeshwar Mulakhraj Bhagwan <span class="text-black text-xl">−</span>
+            </button>
+            <div class="founder-text mt-2 text-gray-700 overflow-hidden transition-all duration-300 open">
+                In his search of Yogeshwar, Mulakh Raj Ji met Mahaprabhu ji and became his devotee. Known for his spiritual miracles, Mulakh ji was able to perform every possible activity in the state of meditation. From 1938, he led the organization as second Guru Gaddi and empowered us all with a new view towards Yoga.
+            </div>
+        </div>
+
+        <!-- Founder 3 -->
+        <div class="founder-card bg-white shadow-lg p-4 rounded-lg transition-all duration-300">
+            <img src="images/yogeshwar-devidayal-mahadev.jpg" alt="Yogeshwar Devidayal Mahadev" class="w-full rounded-md">
+            <button class="toggle-btn flex justify-between items-center w-full text-left mt-4 font-bold text-lg text-orange-500 focus:outline-none">
+                Yogeshwar Devidayal Mahadev <span class="text-black text-xl">−</span>
+            </button>
+            <div class="founder-text mt-2 text-gray-700 overflow-hidden transition-all duration-300 open">
+                He was the third Guru of our organization, taking the charge in 1960. Being the Guru of its kind, he established 17 state-level registered bodies, which are currently running 70 over Yoga temples across the Indian subcontinent. His state-of-art Yogic techniques and the modernly-designed yoga programmes are much-praised in the world.
+            </div>
+        </div>
+
+        <!-- Founder 4 -->
+        <div class="founder-card bg-white shadow-lg p-4 rounded-lg transition-all duration-300">
+            <img src="images/yogeshwar-surender-dev-mahadev.jpg" alt="Yogeshwar Surender Dev Mahadev" class="w-full rounded-md">
+            <button class="toggle-btn flex justify-between items-center w-full text-left mt-4 font-bold text-lg text-orange-500 focus:outline-none">
+                Yogeshwar Surender Dev Mahadev <span class="text-black text-xl">−</span>
+            </button>
+            <div class="founder-text mt-2 text-gray-700 overflow-hidden transition-all duration-300 open">
+                From 1998 to 2016, Swami Surender Dev Ji Mahadev dedicatedly showed the path of divine lifestyle to its visitors. Under his guidance, more than two thousand teachers/yogacharyas were trained to teach Yog, who are employed to educate the authentic Yog practices at 75+ Divya Yog Mandirs/ temples.
+            </div>
+        </div>
+
+    </div>
+
+</div> <!-- END OF ORANGE BACKGROUND SECTION -->
+
+<!-- JavaScript for Toggle Functionality -->
+
+<script>
+
+document.querySelectorAll('.toggle-btn').forEach(button => {
+    let content = button.nextElementSibling;
+    let sign = button.querySelector('span');
+    let card = button.parentElement;
+
+    // DEFAULT: Set all sections to be COLLAPSED initially
+    content.style.maxHeight = "0px"; // Hide text
+    content.style.opacity = "0"; // Make text invisible
+    card.style.paddingBottom = "0px"; // Shrink box
+    content.classList.remove('open');
+    sign.textContent = "+"; // Default to plus sign
+
+    // Toggle functionality
+    button.addEventListener('click', () => {
+        if (content.classList.contains('open')) {
+            content.style.maxHeight = "0px"; // Collapse text
+            content.style.opacity = "0"; // Hide content smoothly
+            card.style.paddingBottom = "0px"; // Shrink box
+            content.classList.remove('open');
+            sign.textContent = "+"; // Change to plus sign
+        } else {
+            content.style.maxHeight = content.scrollHeight + "px"; // Expand text
+            content.style.opacity = "1"; // Show content smoothly
+            card.style.paddingBottom = "1rem"; // Expand box
+            content.classList.add('open');
+            sign.textContent = "−"; // Change to minus sign
+        }
+    });
+});
+
+</script>
+
+
+<!-- TIMELINE SECTION -->
+<section class="relative container mx-auto my-16 px-4 mb-10">
+    <h2 class="text-3xl font-bold text-center mb-6 text-gray-800">HISTORY</h2>
+
+    <div class="relative w-full max-w-3xl mx-auto">
+        <!-- Timeline Line (Centered Orange Bar) -->
+        <div id="timeline-bar" class="absolute left-1/2 transform -translate-x-1/2 w-1 bg-orange-500 transition-all duration-500" style="height: 0;"></div>
+
+        <!-- Timeline Container -->
+        <div id="timeline-container" class="relative space-y-6 overflow-y-auto h-[500px] p-2">
+            <!-- Timeline entries will be added dynamically here -->
+        </div>
+    </div>
+</section>
+
+<!-- JAVASCRIPT FOR DYNAMIC TIMELINE -->
+<script>
+    // ✅ Timeline Data
+    const entries = [
+        { 
+            image: "images/yogeshwar-ramlal-bhagwan.jpg", 
+            text: "Yogeshwar Ramlal Bhagwan", 
+            date: "1888", 
+            description: "Mahaprabhu Ji was the First Guru Gaddi and the inceptor of our mission. He relieved mental and physical stresses and introduced the world to the joy of Yogic practices." 
+        },
+        { 
+            image: "images/yogeshwar-mulakhraj-bhagwan.jpg", 
+            text: "Yogeshwar Mulakhraj Bhagwan", 
+            date: "1938", 
+            description: "In 1938, Mulakh Raj Ji became the second Guru Gaddi and spread the practice of Yoga. His meditation techniques empowered the world, and in 1951, he declared his successor."
+        },
+        { 
+            image: "images/yogeshwar-devidayal-mahadev.jpg", 
+            text: "Yogeshwar DeviDayal Mahadev", 
+            date: "1960", 
+            description: "He took charge in 1960, formalized the mission, and expanded it across India with registered bodies and Yoga temples."
+        },
+        { 
+            image: "images/yogeshwar-surender-dev-mahadev.jpg", 
+            text: "Yogeshwar Surender Dev Mahadev", 
+            date: "1998", 
+            description: "From 1998 to 2016, he trained over two thousand teachers and expanded Yoga education across 75+ Divya Yog Mandirs."
+        },
+        { 
+            image: "images/image3.jpg", 
+            text: "Yogacharya Amit Dev", 
+            date: "2016", 
+            description: "Carrying forward the mission, he is committed to globalizing Vedic Yoga with an enriched spiritual lifestyle."
+        }
+    ];
+
+    let currentEntry = 0;
+    let restartTimer;
+
+    function addEntry(index) {
+        const entry = entries[index];
+        const container = document.getElementById("timeline-container");
+        const timelineBar = document.getElementById("timeline-bar");
+
+        // Alternate left & right positions
+        const isLeft = index % 2 === 0;
+        const alignmentClass = isLeft ? "justify-start" : "justify-end";
+        const textAlignment = isLeft ? "text-left" : "text-right";
+
+        // Create new timeline item
+        const timelineItem = document.createElement("div");
+        timelineItem.className = `flex ${alignmentClass} items-start opacity-0 transform translate-y-6 transition-all duration-700 relative`;
+
+        timelineItem.innerHTML = `
+            <div class="flex ${isLeft ? "flex-row" : "flex-row-reverse"} items-center w-1/2">
+                <div class="w-16 h-16 bg-orange-500 rounded-full flex items-center justify-center shadow-md">
+                    <img src="${entry.image}" class="w-14 h-14 object-cover rounded-full">
+                </div>
+                <div class="bg-gray-100 p-4 rounded-lg shadow-md ml-4 ${textAlignment} w-full">
+                    <h3 class="text-lg font-bold text-gray-800">${entry.text}</h3>
+                    <p class="text-sm text-gray-600 font-semibold">${entry.date}</p>
+                    <p class="text-sm text-gray-600 mt-1">${entry.description}</p>
+                </div>
+            </div>
+        `;
+
+        // Append to timeline
+        container.appendChild(timelineItem);
+
+        // Fade-in and slide-up effect
+        setTimeout(() => {
+            timelineItem.style.opacity = "1";
+            timelineItem.style.transform = "translateY(0)";
+        }, 100);
+
+        // Increase timeline bar height dynamically
+        const newHeight = (index + 1) * 100 + "px";
+        timelineBar.style.height = newHeight;
+
+        // Auto-scroll to bottom
+        setTimeout(() => {
+            container.scrollTo({ top: container.scrollHeight, behavior: "smooth" });
+        }, 500);
+    }
+
+    function startTimeline() {
+        if (currentEntry < entries.length) {
+            addEntry(currentEntry);
+            currentEntry++;
+            setTimeout(startTimeline, 5000); // Add new event every 5 sec
+        } else {
+            // Restart timeline after 5 sec pause
+            restartTimer = setTimeout(() => {
+                document.getElementById("timeline-container").innerHTML = "";
+                document.getElementById("timeline-bar").style.height = "0px";
+                currentEntry = 0;
+                startTimeline();
+            }, 5000);
+        }
+    }
+
+    // ✅ Start the timeline animation
+    startTimeline();
+</script>
+
+    <!-- ✅ Footer Section (Dynamically Loaded, Removed mb-16) -->
+    <div id="footer-container" class="mt-4"></div>
+
+</body>
+</html>

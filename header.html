@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome Icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
+
+    <!-- Razorpay Checkout Script -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <!-- External CSS (Optional) -->
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* Ensures dropdowns are hidden by default */
+        .submenu, .nested-submenu {
+            display: none;
+        }
+
+        /* Show dropdown when hovering */
+        .group:hover > .submenu {
+            display: block;
+        }
+
+        /* Show nested dropdown when hovering over "Yoga Sessions" */
+        .nested-group:hover > .nested-submenu {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+<!-- Top Thin Black Banner (Pinned at Top) -->
+<div class="bg-black text-orange-500 py-2 fixed top-0 left-0 w-full z-50">
+    <div class="container mx-auto px-6 flex justify-between items-center">
+        
+        <!-- Social Media Icons -->
+        <div class="flex space-x-4">
+            <a href="https://www.facebook.com/swamiamitdev" target="_blank" class="hover:text-white"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://x.com/swamiamitdev" target="_blank" class="hover:text-white"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/swamiamitdev/" target="_blank" class="hover:text-white"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/swamiamitdev/" target="_blank" class="hover:text-white"><i class="fab fa-instagram"></i></a>
+            <a href="https://api.whatsapp.com/send/?phone=911140000777" target="_blank" class="hover:text-white"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.youtube.com/@YogacharyaAmitDev" target="_blank" class="hover:text-white"><i class="fab fa-youtube"></i></a>
+        </div>
+
+        <!-- Contact Details -->
+        <div class="flex space-x-6">
+            <span><i class="fas fa-phone-alt"></i> +91 11 40000700</span>
+            <span><i class="fas fa-envelope"></i> info@syaat.org</span>
+        </div>
+        
+    </div>
+</div>
+
+<!-- Navigation Bar (Pinned Below Banner) -->
+<nav class="bg-white shadow-md fixed top-[40px] left-0 w-full z-40">   
+    <div class="container mx-auto px-6 py-4 flex items-center justify-between">
+        
+        <!-- Logo -->
+        <a href="homepage.html">
+            <img src="images/logo-white.png" alt="Logo" style="height: 80px; width: auto;">
+        </a>
+
+        <!-- Navigation Menu -->
+        <div class="flex-1 flex justify-center">
+            <ul class="hidden md:flex space-x-4">
+                <!-- SYAAT Dropdown -->
+                <li class="relative group">
+                    <a href="homepage.html" class="hover:text-orange-500 px-4 py-2 block">SYAAT ▼</a>
+                    <ul class="submenu absolute left-0 top-full bg-white shadow-md py-2 w-48">
+                        <li><a href="overview.html" class="block px-4 py-2 hover:bg-orange-500">Overview</a></li>
+                        <li><a href="guru-parampara.html" class="block px-4 py-2 hover:bg-orange-500">Guru Parampara</a></li>
+                        <!--<li><a href="history.html" class="block px-4 py-2 hover:bg-orange-500">History</a></li>-->
+                        <li><a href="aims-and-objectives.html" class="block px-4 py-2 hover:bg-orange-500">Aims and Objectives</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="events.html" class="hover:text-orange-500 px-4 py-2 block">Events</a></li>
+                <li><a href="what-we-do.html" class="hover:text-orange-500 px-4 py-2 block">What we do</a></li>
+                <li><a href="Maha-Prabhu-Ji-Centres.html" class="hover:text-orange-500 px-4 py-2 block">MahaPrabhu Ji's Centres</a></li>
+                <li><a href="contact.html" class="hover:text-orange-500 px-4 py-2 block">Contact</a></li>
+            </ul>
+        </div>
+
+        <button id="donate-button" type="button" class="bg-orange-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-orange-600">
+            Donate
+        </button>
+        
+        <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("donate-button").addEventListener("click", function (e) {
+                e.preventDefault(); // Prevent default button behavior
+        
+                var options = {
+                    "key": "rzp_test_ABC123456DEF789", // Replace with your Razorpay Test Key
+                    "amount": 50000, // Amount in paise (₹500.00)
+                    "currency": "INR",
+                    "name": "Shri Yog Abhyas Ashram Trust",
+                    "description": "Donation for Yoga Welfare",
+                    "image": "images/logo-white.png",
+                    "handler": function (response) {
+                        alert("Payment Successful! Payment ID: " + response.razorpay_payment_id);
+                    },
+                    "prefill": {
+                        "name": "Your Name",
+                        "email": "your-email@example.com",
+                        "contact": "9876543210"
+                    },
+                    "theme": {
+                        "color": "#f97316"
+                    }
+                };
+        
+                var rzp1 = new Razorpay(options);
+                rzp1.open();
+        
+                return false;
+            });
+        });
+        </script>
+        
+
+    </div>
+</nav>
+
+<!-- Add margin to prevent content from being hidden under navbar -->
+<div class="mt-[80px] p-6">
+    <h1 class="text-center text-2xl">Welcome to Our Website</h1>
+</div>
+
+<!-- Razorpay Donation Script -->
+<script>
+    document.getElementById('donate-button').addEventListener('click', function () {
+        var options = {
+            "key": "rzp_test_qAWWHs1nTN9jVx", // Replace with your Razorpay Key ID
+            "amount": 50000, // Amount in paise (₹500.00)
+            "currency": "INR",
+            "name": "Shri Yog Abhyas Ashram Trust",
+            "description": "Donation for Yoga Welfare",
+            "image": "images/logo-white.png", // Replace with your logo
+            "handler": function (response) {
+                alert("Payment Successful! Payment ID: " + response.razorpay_payment_id);
+            },
+            "prefill": {
+                "name": "Your Name",
+                "email": "your-email@example.com",
+                "contact": "9876543210"
+            },
+            "theme": {
+                "color": "#f97316"
+            }
+        };
+        var rzp1 = new Razorpay(options);
+        rzp1.open();
+    });
+</script>
+
+<!-- Razorpay Checkout Script -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+
+</body>
+</html>

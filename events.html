@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overview and History</title>
+    
+    <!-- ✅ Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- ✅ Font Awesome (Ensures Social Icons Load) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // ✅ Load header.html
+            fetch("header.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("header-container").innerHTML = data;
+                })
+                .catch(error => console.error("Error loading header:", error));
+
+            // ✅ Load footer.html
+            fetch("footer.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("footer-container").innerHTML = data;
+                })
+                .catch(error => console.error("Error loading footer:", error));
+        });
+    </script>
+
+    <style>
+        /* ✅ Ensure header (black banner + navbar) is pinned */
+        #header-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+        }
+
+        /* ✅ Add padding to body to prevent content from overlapping navbar */
+        body {
+            padding-top: 100px; /* Adjust based on navbar height */
+        }
+
+        /* ✅ Video Section Styles */
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 100vh; /* Full screen */
+            overflow: hidden;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ✅ Text Positioned at Bottom Middle */
+        .video-text {
+            position: absolute;
+            bottom: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+        }
+
+        /* ✅ View Events Button (Matches Navbar Donate Button) */
+        .view-events-btn {
+            position: absolute;
+            bottom: 10%;
+            left: 5%;
+            background-color: #f97316; /* orange-500 */
+            color: white;
+            padding: 10px 20px;
+            font-size: 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+        }
+
+        .view-events-btn:hover {
+            background-color: #ea580c; /* Hover color - orange-600 */
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- ✅ Header Section (Black Banner + Navbar) -->
+    <div id="header-container"></div>
+       
+    </header>
+
+<!-- 🧘 Events Section -->
+<section class="bg-orange-50 py-12 mt-10">
+    <h1 class="mb-12 text-xl md:text-2xl lg:text-3xl font-bold text-center">
+        Upcoming & Past Events
+    </h1>
+
+    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- Event Card 1 -->
+        <a href="event1.html" class="block bg-white rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105">
+            <img src="images/event1.jpg" alt="Experience Peace Through Yoga" class="w-full h-48 object-cover">
+            <div class="p-6">
+                <h2 class="text-lg font-semibold mb-2">Experience Peace Through Yoga</h2>
+                <p class="text-orange-500 text-sm mb-2">📅 18 June, 2018 | 📍 Tilak Nagar, New Delhi</p>
+                <p class="text-gray-700 mb-4">Shri Yog Abhyas Ashram Mission spreads Yoga practices worldwide and researches Yoga as a scientific cure.</p>
+                <span class="text-orange-600 hover:underline font-semibold">Read More</span>
+            </div>
+        </a>
+
+        <!-- Event Card 2 -->
+        <a href="event2.html" class="block bg-white rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105">
+            <img src="images/event2.jpg" alt="Yoga for Inner Peace" class="w-full h-48 object-cover">
+            <div class="p-6">
+                <h2 class="text-lg font-semibold mb-2">Yogacharya Amit Dev takes Mahaprabhu Ji’s Yoga To Russia</h2>
+                <p class="text-orange-500 text-sm mb-2">📅 8 December, 2017 | 📍 Russia</p>
+                <p class="text-gray-700 mb-4">Yogacharya Amit Dev ji’s mission to spread Mahaprabhu Ji’s yoga throughout the world reached Russia in the last week.</p>
+                <span class="text-orange-600 hover:underline font-semibold">Read More</span>
+            </div>
+        </a>
+
+        <!-- Event Card 3 -->
+        <a href="event3.html" class="block bg-white rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105">
+            <img src="images/event3.jpg" alt="Mahaprabhu Ji’s Yoga Camp" class="w-full h-48 object-cover">
+            <div class="p-6">
+                <h2 class="text-lg font-semibold mb-2">Mahaprabhu Ji’s Yoga Camp</h2>
+                <p class="text-orange-500 text-sm mb-2">📅 26 July, 2017 | 📍 Chhatrasal Stadium, Delhi</p>
+                <p class="text-gray-700 mb-4">Get ready to embark on this endless journey within you! With the blessings of Ramlal Mulakh Raj DeviDayal Surender.</p>
+                <span class="text-orange-600 hover:underline font-semibold">Read More</span>
+            </div>
+        </a>
+
+        <!-- Event Card 4 -->
+        <a href="event4.html" class="block bg-white rounded-lg shadow-md overflow-hidden transform transition-transform duration-300 hover:scale-105">
+            <img src="images/event4.jpg" alt="Grand Completion of Yoga Camp" class="w-full h-48 object-cover">
+            <div class="p-6">
+                <h2 class="text-lg font-semibold mb-2">Grand Completion of Mahaprabhu Ji’s Yoga Camp</h2>
+                <p class="text-orange-500 text-sm mb-2">📅 26 July, 2017 | 📍 Chhatrasal Stadium, Delhi</p>
+                <p class="text-gray-700 mb-4">Yoga has been practiced in India for centuries, yet it has not reached the masses properly.</p>
+                <span class="text-orange-600 hover:underline font-semibold">Read More</span>
+            </div>
+        </a>
+
+    </div>
+</section>
+
+
+
+
+
+    <!-- ✅ Footer Section (Dynamically Loaded, Removed mb-16) -->
+    <div id="footer-container" class="mt-10"></div>
+
+</body>
+</html>
