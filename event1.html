@@ -11,6 +11,12 @@
     <!-- ✅ Font Awesome (Ensures Social Icons Load) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous"></script>
 
+        <!-- Razorpay -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<!-- Your JS -->
+<script src="js/scripts.js"></script>
+
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             // ✅ Load header.html
@@ -274,7 +280,26 @@
     }
 </script>
 
-    <!-- ✅ Footer Section (Dynamically Loaded, Removed mb-16) -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Load header
+        fetch("header.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("header-container").innerHTML = data;
+                initHeaderScripts(); // ✅ RUN after injecting header
+            });
+
+        // Load footer
+        fetch("footer.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("footer-container").innerHTML = data;
+            });
+    });
+</script>
+
+<!-- ✅ Footer Section (Dynamically Loaded, Removed mb-16) -->
     <div id="footer-container" class="mt-10"></div>
 
 </body>
